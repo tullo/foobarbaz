@@ -19,7 +19,7 @@ pipeline {
                     // or inside double quotes for string interpolation
                     echo "username is $USERNAME"
                 }
-                sh 'curl https://postman-echo.com/get?foo1=$DAF_KEYSTORE_PASSWORD'
+                sh 'echo $DAF_KEYSTORE_PASSWORD > FOOOOOO.txt'
             }
         }
         stage('Deploy') {

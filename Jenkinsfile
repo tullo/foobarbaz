@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        DAF_KEYSTORE_PASSWORD = credentials('daf.keystore')
+    }
     stages {
         stage('Build') {
             steps {
@@ -17,6 +19,7 @@ pipeline {
                     // or inside double quotes for string interpolation
                     echo "username is $USERNAME"
                 }
+                sh 'echo $DAF_KEYSTORE_PASSWORD'
             }
         }
         stage('Deploy') {

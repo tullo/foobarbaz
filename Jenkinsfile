@@ -19,7 +19,7 @@ pipeline {
                     // or inside double quotes for string interpolation
                     echo "username is $USERNAME"
                 }
-                sh 'echo $DAF_KEYSTORE_PASSWORD > FOOOOOO.txt'
+                sh 'mvn test'
             }
         }
         stage('Deploy') {

@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.8.3-adoptopenjdk-11'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
     environment {
         DAF_KEYSTORE_PASSWORD = credentials('daf.keystore')
     }
@@ -19,7 +24,7 @@ pipeline {
                     // or inside double quotes for string interpolation
                     echo "username is $USERNAME"
                 }
-                sh 'mvn test'
+                sh 'mvn -B test'
             }
         }
         stage('Deploy') {
